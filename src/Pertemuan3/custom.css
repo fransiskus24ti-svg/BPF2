@@ -1,0 +1,63 @@
+/* Styling untuk keseluruhan halaman - Nuansa Gelap & Mistis */
+body {
+    font-family: 'Georgia', 'Times New Roman', serif; /* Font serif memberikan kesan klasik/kuno */
+    background-color: #0a0a0a; /* Hitam pekat */
+    background-image: radial-gradient(circle, #1a1a1a 0%, #050505 100%); 
+    color: #d4d4d4; /* Abu-abu terang agar teks nyaman dibaca */
+    margin: 0;
+    padding: 20px;
+}
+
+/* Container utama - Seperti gulungan naskah kuno atau kuil */
+.card {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #111; /* Hitam sedikit lebih terang dari body */
+    padding: 30px;
+    border-radius: 4px;
+    border: 1px solid #3d3428; /* Border tembaga tua */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(184, 134, 11, 0.1);
+    position: relative;
+}
+
+/* Header utama - Emas Bercahaya */
+h1 {
+    color: #e5b95f; /* Warna emas khas Wukong */
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(229, 185, 95, 0.5);
+    text-align: center;
+    border-bottom: 1px solid #e5b95f;
+    padding-bottom: 15px;
+}
+
+/* Paragraf */
+p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #bfae96; /* Warna krem pucat/vintage */
+}
+
+/* Garis pemisah - Gaya Logam Berkarat */
+hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #e5b95f, transparent);
+    margin: 20px 0;
+}
+
+/* Greeting / Footer kecil */
+small {
+    display: block;
+    font-style: italic;
+    text-align: center;
+    color: #666;
+    margin-top: 15px;
+    letter-spacing: 1px;
+}
+
+/* Tambahan: Efek hover pada kartu */
+.card:hover {
+    border-color: #e5b95f;
+    transition: 0.5s ease;
+}
