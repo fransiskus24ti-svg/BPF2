@@ -27,8 +27,8 @@ function GreetingBinjai(){
 }
 
 function QuoteText() {
-    const text = "Mulutmu Harimaumu";
-    const text2 = "Aku ingin jadi macan";
+    const text = "Stay focus";
+    const text2 = "Do everything 100%";
     return (
         <div>
             <hr/>
