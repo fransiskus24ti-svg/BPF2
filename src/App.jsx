@@ -1,28 +1,35 @@
+import React, { Suspense } from "react";
 import "./assets/tailwind.css";
-import Sidebar from "./layouts/sidebar";
-import Header from "./layouts/header";
-import Dashboard from "./pages/dashboard";
-import Orders from "./pages/Order";
-import Customers from "./pages/Customer";
-import { Route,Routes } from "react-router-dom";
-import NotFound from "./pages/Notfound";
+const Dashboard = React.lazy(() => import("./pages/Dashboard"));
+const Orders = React.lazy(() => import("./pages/Order"));
+const Customers = React.lazy(() => import("./pages/Customer"));
+const NotFound = React.lazy(() => import("./pages/NotFound"));
+import { Route, Routes } from "react-router-dom";
+import Loading from "./components/Loading";
+const MainLayout = React.lazy(() => import("./layouts/MainLayout"));
+const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"));
+const Login = React.lazy(() => import("./pages/auth/Login"));
+const Register = React.lazy(() => import("./pages/auth/Register"));
+const Forgot = React.lazy(() => import("./pages/auth/Forgot"));
 
 function App() {
   return (
-    <div id="app-container" className="bg-gray-100 min-h-screen flex">
-      <div id="layout-wrapper" className="flex flex-row flex-1">
-        <Sidebar />
-        <div id="main-content" className="flex-1 p-4">
-          <Header />
-          <Routes>
-            <Route path="*" element={<NotFound />} />
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/orders" element={<Orders />} />
-            <Route path="/customers" element={<Customers />} />
-          </Routes>
-        </div>
-      </div>
-    </div>
+    <Suspense fallback={<Loading />}>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="*" element={<NotFound />} />
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/customers" element={<Customers />} />
+        </Route>
+
+        <Route element={<AuthLayout />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot" element={<Forgot />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 }
 
