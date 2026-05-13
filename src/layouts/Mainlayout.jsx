@@ -1,22 +1,24 @@
 import "../assets/tailwind.css";
-import Sidebar from "../components/sidebar";
 import Header from "../components/header";
-import { Outlet } from "react-router-dom";  
-
-
-
+import { Outlet } from "react-router-dom";
 
 export default function MainLayout() {
   return (
-    <div className="bg-gray-100 min-h-screen flex">
-      <div className="flex flex-row flex-1">
-        <Sidebar />
-        <div className="flex-1 p-4">
-          <Header />
+    <div className="min-h-screen bg-[#F5F6FA] flex">
+      
 
+      {/* CONTENT */}
+      <div className="flex-1 flex flex-col">
+        
+        {/* HEADER */}
+        <Header />
+
+        {/* PAGE CONTENT */}
+        <main className="p-6">
           <Outlet />
-        </div>
+        </main>
+
       </div>
     </div>
-  )
+  );
 }

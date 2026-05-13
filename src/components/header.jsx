@@ -1,52 +1,65 @@
-import { FaBell, FaSearch } from "react-icons/fa";
-import { FcAreaChart } from "react-icons/fc";
-import { SlSettings } from "react-icons/sl";
+import { Link } from "react-router-dom";
 
 export default function Header() {
-    return (
-        <div id="header-container" className="flex justify-between items-center p-4">
-            {/* Search Bar */}
-            <div id="search-bar" className="relative w-full max-w-lg">
-                <input
-                    id="search-input"
-                    type="text"
-                    placeholder="Search Here..."
-                    className="border border-gray-100 p-2 pr-10 
-                    bg-white w-full max-w-lg rounded-md outline-none"
-                />
-                <FaSearch id="search-icon" className="absolute right-4 top-1/2 transform 
-                -translate-y-1/2 text-gray-300" />
-            </div>
+  return (
+    <header className="bg-white border-b border-gray-100 px-10 py-6 flex items-center justify-between">
 
-            {/* Icon & Profile Section */}
-            <div id="icons-container" className="flex items-center space-x-4">
-                {/* Icons */}
-                <div id="notification-icon" className="relative p-3 bg-blue-100 rounded-2xl 
-                text-blue-500 cursor-pointer">
-                    <FaBell />
-                    <span id="notification-badge" className="absolute top-0 right-0 transform translate-x-1/2 
-                    -translate-y-1/2 bg-blue-200 rounded-full px-2 py-1 text-xs">50</span>
-                </div>
-                <div id="chart-icon" className="p-3 bg-blue-100 rounded-2xl cursor-pointer">
-                    <FcAreaChart />
-                </div>
-                <div id="settings-icon" className="p-3 bg-red-100 rounded-2xl text-red-500 cursor-pointer">
-                    <SlSettings />
-                </div>
-             
+      {/* LEFT */}
+      <div className="flex items-center gap-3">
 
-                {/* Profile Section */}
-                <div id="profile-container" className="flex items-center space-x-4 border-l pl-4 border-gray-300">
-                    <span id="profile-text">
-                        Hello, <b>John obimikel</b>
-                    </span>
-                    <img
-                        id="profile-avatar"
-                        src="https://avatar.iran.liara.run/public/28"
-                        className="w-10 h-10 rounded-full"
-                    />
-                </div>
-            </div>
+        <div className="w-11 h-11 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-xl">
+          F
         </div>
-    );
+
+        <h1 className="text-3xl font-bold text-slate-800">
+          Foodies<span className="text-orange-500">.</span>
+        </h1>
+
+      </div>
+
+      {/* CENTER MENU */}
+      <nav className="hidden lg:flex items-center gap-10">
+
+        <a className="text-gray-600 hover:text-orange-500 font-semibold transition-all">
+          Home
+        </a>
+
+        <a className="text-gray-600 hover:text-orange-500 font-semibold transition-all">
+          Menu
+        </a>
+
+        <a className="text-gray-600 hover:text-orange-500 font-semibold transition-all">
+          Promo
+        </a>
+
+        <a className="text-gray-600 hover:text-orange-500 font-semibold transition-all">
+          Tentang
+        </a>
+
+        <a className="text-gray-600 hover:text-orange-500 font-semibold transition-all">
+          Kontak
+        </a>
+
+      </nav>
+
+      {/* RIGHT */}
+      <div className="flex items-center gap-5">
+
+        <Link
+          to="/login"
+          className="font-semibold text-slate-700 hover:text-orange-500"
+        >
+          Sign In
+        </Link>
+
+        <Link
+          to="/register"
+          className="bg-[#0F1020] text-white px-7 py-3 rounded-xl font-bold hover:scale-105 transition-all"
+        >
+          Sign Up
+        </Link>
+
+      </div>
+    </header>
+  );
 }

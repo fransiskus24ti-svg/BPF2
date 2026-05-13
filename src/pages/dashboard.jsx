@@ -1,51 +1,94 @@
-import { FaShoppingCart, FaTruck, FaBan, FaDollarSign } from "react-icons/fa";
-import PageHeader from "../components/pageheader";
+import {
+  FaShoppingCart,
+  FaTruck,
+  FaBan,
+  FaDollarSign,
+} from "react-icons/fa";
+
+const cards = [
+  {
+    title: "Total Orders",
+    value: "75",
+    icon: <FaShoppingCart />,
+    bg: "bg-green-500",
+  },
+  {
+    title: "Total Delivered",
+    value: "175",
+    icon: <FaTruck />,
+    bg: "bg-blue-500",
+  },
+  {
+    title: "Total Canceled",
+    value: "40",
+    icon: <FaBan />,
+    bg: "bg-red-500",
+  },
+  {
+    title: "Total Revenue",
+    value: "Rp.128K",
+    icon: <FaDollarSign />,
+    bg: "bg-yellow-500",
+  },
+];
 
 export default function Dashboard() {
-    return (
-        <div id="dashboard-container">
-            <PageHeader />  
-            <div id="dashboard-grid" className="p-5 grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-                <div id="dashboard-orders" className="flex items-center space-x-5 bg-white rounded-lg shadow-md p-4">
-                    <div id="orders-icon" className="bg-hijau rounded-full p-4">
-                        <FaShoppingCart />
-                    </div>
-                    <div id="orders-info" className="flex flex-col">
-                        <span id="orders-count" className="Menampilkan angka order dalam ukuran besar.">75</span>
-                        <span id="orders-text" className="text-gray-400">Total Orders</span>
-                    </div>
-                </div>
+  return (
+    <div>
 
-                <div id="dashboard-delivered" className="flex items-center space-x-5 bg-white rounded-lg shadow-md p-4">
-                    <div id="delivered-icon">
-                        <FaTruck />
-                    </div>
-                    <div id="delivered-info">
-                        <span id="delivered-count">175</span>
-                        <span id="delivered-text">Total Delivered</span>
-                    </div>
-                </div>
+      {/* TITLE */}
+      <div className="flex items-center justify-between mb-8">
 
-                <div id="dashboard-canceled" className="flex items-center space-x-5 bg-white rounded-lg shadow-md p-4">
-                    <div id="canceled-icon">
-                        <FaBan />
-                    </div>
-                    <div id="canceled-info">
-                        <span id="canceled-count">40</span>
-                        <span id="canceled-text">Total Canceled</span>
-                    </div>
-                </div>
+        <div>
+          <h1 className="text-3xl font-bold text-slate-800">
+            Dashboard
+          </h1>
 
-                <div id="dashboard-revenue" className="flex items-center space-x-5 bg-white rounded-lg shadow-md p-4">
-                    <div id="revenue-icon">
-                        <FaDollarSign />
-                    </div>
-                    <div id="revenue-info">
-                        <span id="revenue-amount">Rp.128</span>
-                        <span id="revenue-text">Total Revenue</span>
-                    </div>
-                </div>
-            </div>
+          <p className="text-gray-400 mt-1">
+            Dashboard / Order List
+          </p>
         </div>
-    );
+
+        <button className="bg-green-500 text-white px-6 py-3 rounded-xl font-bold shadow-lg">
+          Add Button
+        </button>
+
+      </div>
+
+      {/* CARDS */}
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+
+        {cards.map((item, index) => (
+          <div
+            key={index}
+            className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100"
+          >
+            <div className="flex items-center justify-between">
+
+              <div>
+
+                <p className="text-gray-400 font-medium">
+                  {item.title}
+                </p>
+
+                <h2 className="text-4xl font-black text-slate-800 mt-3">
+                  {item.value}
+                </h2>
+
+              </div>
+
+              <div
+                className={`${item.bg} text-white p-5 rounded-2xl text-2xl`}
+              >
+                {item.icon}
+              </div>
+
+            </div>
+          </div>
+        ))}
+
+      </div>
+
+    </div>
+  );
 }
