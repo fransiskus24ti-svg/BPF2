@@ -1,20 +1,29 @@
-import { MdFastfood } from "react-icons/md";
-import { BiNotepad } from "react-icons/bi";
 import React from "react";
-import { MdDashboard, MdPeople } from "react-icons/md";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+// Perbaikan import: Satukan semua icon MD ke dalam /md
+import { MdDashboard, MdPeople, MdFastfood } from "react-icons/md"; 
+import { BiNotepad, BiLogOut } from "react-icons/bi";
+import { AiOutlineFileText } from "react-icons/ai";
 import { FaPlus } from "react-icons/fa";
-import { Link, NavLink } from "react-router-dom";
-import { AiOutlineFileText } from "react-icons/ai"; // Import icon untuk Notes
-
 
 export default function Sidebar() {
+  const navigate = useNavigate();
 
   const menuClass = ({ isActive }) =>
-    `flex cursor-pointer items-center rounded-xl p-4  space-x-2
+    `flex cursor-pointer items-center rounded-xl p-4 space-x-2
         ${isActive
       ? "text-hijau bg-green-200 font-extrabold"
       : "text-gray-600 hover:text-hijau hover:bg-green-200 hover:font-extrabold"
     }`;
+
+  // Fungsi penanganan logout
+  const handleLogout = () => {
+    const konfirmasi = confirm("Apakah kamu yakin ingin keluar dari aplikasi Sedap?");
+    if (konfirmasi) {
+      localStorage.removeItem("token"); // Hapus token dari browser
+      window.location.href = "/login"; // Forward paksa ke halaman login
+    }
+  };
 
   return (
     <div
@@ -41,55 +50,45 @@ export default function Sidebar() {
       <div id="sidebar-menu" className="mt-10 flex-1">
         <ul id="menu-list" className="space-y-3">
           <li>
-            <NavLink
-              id="menu-1"
-              to="/"
-              className={menuClass}
-            >
+            <NavLink id="menu-1" to="/" className={menuClass}>
               <MdDashboard className="mr-4 text-xl" />
               <span>Dashboard</span>
             </NavLink>
           </li>
           <li>
-            <NavLink
-              id="menu-2"
-              to="/orders"
-              className={menuClass}
-            >
+            <NavLink id="menu-2" to="/orders" className={menuClass}>
               <BiNotepad className="mr-4 text-xl" />
               <span>Orders</span>
             </NavLink>
           </li>
           <li>
-            <NavLink
-              id="menu-3"
-              to="/customers"
-              className={menuClass}
-            >
+            <NavLink id="menu-3" to="/customers" className={menuClass}>
               <MdPeople className="mr-4 text-xl" />
               <span>Customers</span>
             </NavLink>
           </li>
           <li>
-            <NavLink
-              id="menu-4"
-              to="/products"
-              className={menuClass}
-            >
+            <NavLink id="menu-4" to="/products" className={menuClass}>
               <MdFastfood className="mr-4 text-xl" />
-              Products
+              <span>Products</span>
             </NavLink>
           </li>
-          {/* Menu Notes - Tambahan baru */}
           <li>
-            <NavLink
-              id="menu-notes"
-              to="/notes"
-              className={menuClass}
-            >
+            <NavLink id="menu-notes" to="/notes" className={menuClass}>
               <AiOutlineFileText className="mr-4 text-xl" />
               <span>Notes</span>
             </NavLink>
+          </li>
+
+          {/* TOMBOL LOGOUT UTK FORWARD KE LOGIN */}
+          <li>
+            <button
+              onClick={handleLogout}
+              className="w-full flex cursor-pointer items-center rounded-xl p-4 space-x-2 text-red-500 hover:bg-red-50 font-semibold transition-all duration-200 text-left"
+            >
+              <BiLogOut className="mr-4 text-xl" />
+              <span>Logout</span>
+            </button>
           </li>
         </ul>
       </div>
